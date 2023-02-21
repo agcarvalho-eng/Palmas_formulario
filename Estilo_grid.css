@@ -1,0 +1,208 @@
+/*Zerando todas as margens*/
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    color: hsl(160, 15%, 20%);
+}
+
+/*Criando e configurando o Grid*/
+.pagina {
+    display: grid;
+    grid-template-areas: "cab" "men" "home" "form" "atua" "eqPe" "eqEx" "refl" "roda";
+    row-gap: 2px;
+}
+
+.cabecalho {
+    color: hsl(245, 76%, 13%);
+    /*background-color: #e9967a;*/
+    grid-area: cab;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.foto {
+    width: 80px;
+}
+
+.titulo {
+    padding: 10px;
+    text-shadow: 1px 1px 3px #0d0d41;
+    display: flex;
+}
+
+.menuPrincipal {
+    color: hsl(245, 76%, 13%);
+    background-color: hsl(49, 72%, 70%);
+    grid-area: men;
+    display: flex;    
+}
+
+.itensMenu {
+    list-style: none;
+    padding-left: 0;
+    display: block;
+    outline: none;
+    flex-direction: row;
+    justify-content: space-around;
+    width: auto;
+    height: auto;
+}
+
+.itensMenu li {
+    background-color: hsl(49, 72%, 70%);
+    display: block;
+    float: none;
+    padding: 2px;/*substituído 1rem por 2px*/
+    position: relative;
+    text-decoration: none;
+    transition-duration: 0.5s;
+    list-style: none;
+    position: relative;
+    width: 100%;
+}
+
+.itensMenu li a {
+    color: rgb(57, 41, 194);
+    text-decoration: none;
+    text-align: left;
+    display: block;
+    outline: none;
+}
+
+.home {
+    color: hsl(245, 76%, 13%);
+    /*background-color: hsl(165, 72%, 70%);*/
+    grid-area: home; 
+}
+
+.turismo {
+    color: hsl(245, 76%, 13%);
+    /*background-color: hsl(165, 72%, 70%);*/
+    grid-area: form;
+}
+
+.clima {
+    color: hsl(245, 76%, 13%);
+    /*background-color: hsl(165, 72%, 70%);*/
+    grid-area: atua;
+}
+
+.previsaoTempo {
+    color: hsl(245, 76%, 13%);
+    /*background-color: hsl(165, 72%, 70%);*/
+    grid-area: eqPe;
+}
+
+.reflexao {
+    color: hsl(245, 76%, 13%);
+    /*background-color: hsl(165, 72%, 70%);*/
+    grid-area: refl;
+}
+
+.rodape {
+    color: hsl(245, 76%, 13%);
+    /*background-color: hsl(165, 72%, 70%);*/
+    grid-area: roda;
+}
+
+.dropdown {
+    visibility: hidden;
+    opacity: 0;
+    min-width: 5rem;
+    position: static;
+    transition: all 0.5s ease;
+    margin-top: 1rem;
+    left: 0;
+    display: none;
+    box-shadow: 0px 8px 16px 0px hsl(197, 100%, 50%);
+}
+
+.dropdown li {
+    clear: both;
+    width: 100%;
+}
+
+.itensMenu li:hover,
+.itensMenu li:focus-within {
+    background-color: aqua;
+    cursor: pointer;
+    color: hwb(281 42% 6%);
+    font-weight: bold;
+    transition: 0.4s;
+    left: 2px;
+}
+
+.itensMenu li a:hover {
+    color: hwb(281 42% 6%);
+    background-color: #70d1d1;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.4s;
+    left: 2px;
+}
+
+/*Controle de exibição do Dropdown*/
+
+.itensMenu li:hover>ul,
+.itensMenu li:focus-within>ul
+.dropdown ul:hover,
+.dropdown ul:focus {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+}
+/*Ajustando o conteúdo da página para exibição em telas maiores*/
+
+@media  screen and (min-width: 480px) {
+    .pagina {
+        grid-template-areas: "cab cab"
+                            "men men"
+                            "home refl"
+                            "form refl"
+                            "atua refl"
+                            "eqPe refl"
+                            "eqEx refl"
+                            "roda roda";
+        column-gap: 4px;
+        row-gap: 4px;
+        grid-template-columns: 3fr 1fr;
+    }
+
+    .itensMenu {
+        display: flex;
+    }
+
+    .cabecalho {
+        flex-direction: row;
+    }
+
+    .titulo {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .pagina {
+        grid-template-areas: "cab cab cab"
+                             "men home refl"
+                             "men home refl"
+                             "men form refl"
+                             "men atua refl"
+                             "men eqPe refl"
+                             "men eqEx refl"
+                             "roda roda roda";
+        grid-template-columns: 1fr 4fr 2fr;
+        row-gap: 4px;
+        column-gap: 4px;
+    }
+
+    .itensMenu {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+}
